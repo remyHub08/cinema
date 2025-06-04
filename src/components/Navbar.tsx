@@ -90,6 +90,9 @@ const Navbar = () => {
           <NavLink to="/movies" className={({isActive}) => isActive ? "text-primary" : "hover:text-primary"}>
             Movies
           </NavLink>
+          <NavLink to="/series" className={({isActive}) => isActive ? "text-primary" : "hover:text-primary"}>
+            Series
+          </NavLink>
           <NavLink to="/about" className={({isActive}) => isActive ? "text-primary" : "hover:text-primary"}>
             About
           </NavLink>

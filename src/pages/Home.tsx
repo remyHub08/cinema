@@ -16,6 +16,9 @@ const Home = () => {
     agreeTerms: false
   });
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+  // Series modal state
+  const [showSeriesModal, setShowSeriesModal] = useState(false);
+  const seriesMovies = movies.filter(m => m.title.toLowerCase().startsWith('sinners'));
 
   useEffect(() => {
     setIsLoaded(true);
@@ -92,16 +95,24 @@ const Home = () => {
   return (
     <div className={`transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Hero />
-      
+      {/* Now Showing Section */}
       <section className="py-16">
         <div className="container">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">Now Showing</h2>
-            <Link to="/movies" className="flex items-center text-primary hover:underline">
-              View All <ChevronRight className="h-5 w-5" />
-            </Link>
+            <h2 className="text-2xl md:text-3xl font-bold">Latest Movies</h2>
+            <div className="flex gap-4">
+              <Link to="/movies" className="flex items-center text-primary hover:underline">
+                View All <ChevronRight className="h-5 w-5" />
+              </Link>
+              {/* Series Modal Trigger */}
+              <button
+                className="btn btn-secondary"
+                onClick={() => setShowSeriesModal(true)}
+              >
+                View Sinners Series
+              </button>
+            </div>
           </div>
-          
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {movies.map(movie => (
               <MovieCard 
@@ -117,6 +128,48 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Latest Series Section */}
+      <section className="py-16">
+        <div className="container">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold">Latest Series</h2>
+            {/* Removed View Sinners Series button */}
+          </div>
+        </div>
+      </section>
+
+      {/* Series Modal */}
+      {showSeriesModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="bg-secondary-light rounded-lg shadow-lg max-w-2xl w-full p-8 relative">
+            <button
+              className="absolute top-4 right-4 text-gray-400 hover:text-primary text-2xl"
+              onClick={() => setShowSeriesModal(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-bold mb-6">Sinners Series</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {seriesMovies.map(movie => (
+                <div key={movie.id} className="bg-secondary p-4 rounded-lg flex flex-col items-center">
+                  <img src={movie.image} alt={movie.title} className="w-full h-48 object-cover rounded mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">{movie.title}</h3>
+                  <p className="text-gray-400 text-sm mb-2">{movie.duration}</p>
+                  <Link
+                    to={`/movies/${movie.id}`}
+                    className="btn btn-primary w-full"
+                    onClick={() => setShowSeriesModal(false)}
+                  >
+                    View Details
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <section className="py-16">
         <div className="container">

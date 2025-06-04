@@ -11,12 +11,27 @@ export interface Movie {
   director: string;
   cast: string[];
   releaseDate: string;
+  seriesId?: string; // Optional series identifier for series support
 }
 
 export const movies: Movie[] = [
   {
-    id: '10',
+    id: '9',
     title: 'sinners A',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/9ZmdDOIbiFCZOvRXBQ7muWUu32l.jpg',
+    video: 'https://www.mediafire.com/file/bjwc0p47k9t0n4i/SINNERS_A.mp4/file',
+    trailer: 'https://youtu.be/bKGxHflevuk',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'rocky kimomo',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
+  {
+    id: '10',
+    title: 'sinners B',
     genre: 'Action, Adventure, Sci-Fi',
     image: 'https://image.tmdb.org/t/p/original/9ZmdDOIbiFCZOvRXBQ7muWUu32l.jpg',
     video: 'https://www.mediafire.com/file/bjwc0p47k9t0n4i/SINNERS_A.mp4/file',
@@ -138,5 +153,5 @@ export const movies: Movie[] = [
     director: 'sankara da premier',
     cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
     releaseDate: '2012-05-04'
-  },
-];
+  }]
+  

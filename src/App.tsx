@@ -5,7 +5,8 @@ import Movies from './pages/Movies';
 import MovieDetail from './pages/MovieDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import NotFound from './pages/NotFound';
+import SeriesDetail from './pages/SeriesDetail';
+import SeriesPage from './pages/Series';
 
 function App() {
   return (
@@ -16,11 +17,11 @@ function App() {
         <Route path="movies/:id" element={<MovieDetail />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="series" element={<SeriesPage />} />
+        <Route path="series/:seriesId" element={<SeriesDetail />} />
       </Route>
     </Routes>
   );
 }
 
 export default App;
-  
