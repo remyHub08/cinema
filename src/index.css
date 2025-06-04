@@ -1,0 +1,44 @@
+@tailwind  base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-secondary text-white font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+  
+  .btn {
+    @apply px-6 py-2 font-medium rounded-md transition-all duration-200 inline-flex items-center justify-center;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-light hover:bg-opacity-80 text-white;
+  }
+  
+  .btn-accent {
+    @apply bg-accent hover:bg-opacity-90 text-secondary;
+  }
+
+  .movie-card {
+    @apply overflow-hidden rounded-lg bg-secondary-light transition-transform duration-300 hover:scale-[1.02];
+  }
+
+  .movie-card-img {
+    @apply h-72 w-full object-cover;
+  }
+}
+  
