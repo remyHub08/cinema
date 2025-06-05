@@ -50,7 +50,7 @@ export const series: Series[] = [
             duration: "50m",
             releaseDate: "2017-05-02",
             video: "https://www.mediafire.com/file/3gt76zhvgly4d02/Triada_ep1.mp4/file",
-            trailer: "https://youtu.be/wSZUISc0ESE" // Example trailer (YouTube embed)
+            trailer: "https://www.youtube.com/embed/wSZUISc0ESE"
           },
           {
             id: "s1e2",
@@ -60,7 +60,7 @@ export const series: Series[] = [
             duration: "50m",
             releaseDate: "2017-05-09",
             video: "https://www.mediafire.com/file/xbpaki9w39stqxm/TRIAD_2.mp4/file",
-            trailer: "https://youtu.be/wSZUISc0ESE"
+            trailer: "https://www.youtube.com/embed/wSZUISc0ESE"
           },
           {
             id: "s1e3",
@@ -70,7 +70,7 @@ export const series: Series[] = [
             duration: "50m",
             releaseDate: "2017-05-16",
             video: "https://www.mediafire.com/file/826eom8g5ut6ash/Triada_ep3.mp4/file",
-            trailer: "https://youtu.be/wSZUISc0ESE"
+            trailer: "https://www.youtube.com/embed/wSZUISc0ESE"
           },
           {
             id: "s1e4",
@@ -80,7 +80,17 @@ export const series: Series[] = [
             duration: "50m",
             releaseDate: "2017-05-23",
             video: "https://example.com/lcdp-s1e4.mp4",
-            trailer: "https://youtu.be/wSZUISc0ESE"
+            trailer: "https://www.youtube.com/embed/wSZUISc0ESE"
+          },
+          {
+            id: "s1e5",
+            title: "Ep5 triada",
+            description: "Triada",
+            image: "https://image.tmdb.org/t/p/original/qrgl150Zn55WTkVKwZIQhziZS0l.jpg",
+            duration: "50m",
+            releaseDate: "2017-05-02",
+            video: "https://www.mediafire.com/file/5prr4a8on70hslf/Triada_ep5.mp4/file",
+            trailer: "https://www.youtube.com/embed/wSZUISc0ESE"
           },
           
         ]
@@ -89,4 +99,4 @@ export const series: Series[] = [
     ]
   }
 ];
-    
+

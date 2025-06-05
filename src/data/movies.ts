@@ -16,6 +16,20 @@ export interface Movie {
 
 export const movies: Movie[] = [
   {
+    id: '8',
+    title: 'until down',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/6UABPe0EWpSWhFnu8MuLXi6cQwB.jpg',
+    video: 'https://www.mediafire.com/file/o7j1t8lgfmh1vs9/Until_Dawn_by_sankra.mp4/file',
+    trailer: 'https://youtu.be/xR3lVHnh0Gg',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'sankara da premier',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
+  {
     id: '9',
     title: 'sinners A',
     genre: 'Action, Adventure, Sci-Fi',
@@ -109,20 +123,6 @@ export const movies: Movie[] = [
     duration: '2h 23min',
     description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
     director: 'Joss Whedon',
-    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
-    releaseDate: '2012-05-04'
-  },
-  {
-    id: '16',
-    title: 'until down',
-    genre: 'Action, Adventure, Sci-Fi',
-    image: 'https://i.pinimg.com/736x/ba/74/5f/ba745f4131e9a215fe7b0015fef97230.jpg',
-    video: 'https://www.mediafire.com/file/v66sgezumbbkbwv/UNTIL_DOWN_.mp4/file',
-    trailer: 'https://www.youtube.com/watch?v=gjJxGQZ0U5o',
-    rating: 8.0,
-    duration: '2h 23min',
-    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
-    director: 'gaheza simbax',
     cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
     releaseDate: '2012-05-04'
   },
