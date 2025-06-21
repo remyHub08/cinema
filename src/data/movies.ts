@@ -17,6 +17,20 @@ export interface Movie {
 
 export const movies: Movie[] = [
   {
+    id: '0',
+    title: 'the guest',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/x9BvRmPsXzN6e2cxvf5ZCBh7FQh.jpg',
+    video: 'https://www.mediafire.com/file/izztjj95mka01je/The_Guest_Sankara.mp4/file',
+    trailer: 'https://youtu.be/9tyL6OzBMt8',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'Rocky',
+    cast: ['remybetty'],
+    releaseDate: '2025-20-04'
+  },  
+  {
     id: '1',
     title: '13 SINS',
     genre: 'Action, Adventure, Sci-Fi',
