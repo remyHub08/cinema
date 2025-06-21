@@ -66,7 +66,7 @@ const MovieDetail = () => {
                     <h3 className="font-semibold">Duration</h3>
                     <p className="text-gray-400">{movie.duration}</p>
                   </div>
-                </div>a
+                </div>
                 
                 <div className="flex items-start">
                   <Calendar className="h-5 w-5 text-gray-400 mr-3 mt-0.5" />
@@ -134,6 +134,16 @@ const MovieDetail = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {movies
             .filter(m => m.id !== id)
+            .filter(m => {
+              // Only show movies added today
+              const today = new Date();
+              const release = new Date(m.releaseDate);
+              return (
+                today.getFullYear() === release.getFullYear() &&
+                today.getMonth() === release.getMonth() &&
+                today.getDate() === release.getDate()
+              );
+            })
             .slice(0, 4)
             .map(movie => (
               <Link key={movie.id} to={`/movies/${movie.id}`} className="movie-card block">

@@ -1,13 +1,26 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Menu, X, Film, Search } from 'lucide-react';
-import { movies, Movie } from '../data/movies';
+import { movies } from '../data/movies';
+import { series } from '../data/series';
+
+// Define a type for search results
+// Movie and Series share most fields, so we can combine them
+
+type SearchResult = {
+  id: string;
+  title: string;
+  genre: string;
+  image: string;
+  releaseDate: string;
+  _type: 'movie' | 'series';
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const navigate = useNavigate();
@@ -18,13 +31,22 @@ const Navbar = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      const found = movies.find(movie =>
+      // Search movies
+      const foundMovie = movies.find(movie =>
         movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         movie.genre.toLowerCase().includes(searchQuery.toLowerCase()) ||
         movie.cast.some(actor => actor.toLowerCase().includes(searchQuery.toLowerCase()))
       );
-      if (found) {
-        navigate(`/movies/${found.id}`);
+      // Search series
+      const foundSeries = series.find(s =>
+        s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        s.genre.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        s.cast.some(actor => actor.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+      if (foundMovie) {
+        navigate(`/movies/${foundMovie.id}`);
+      } else if (foundSeries) {
+        navigate(`/series/${foundSeries.id}`);
       } else {
         navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
       }
@@ -52,27 +74,39 @@ const Navbar = () => {
       return;
     }
     const timer = setTimeout(() => {
-      const results = movies.filter(movie =>
+      // Movie results
+      const movieResults = movies.filter(movie =>
         movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         movie.genre.toLowerCase().includes(searchQuery.toLowerCase()) ||
         movie.cast.some(actor => actor.toLowerCase().includes(searchQuery.toLowerCase()))
       );
-      setSearchResults(results.slice(0, 5));
+      // Series results
+      const seriesResults = series.filter(s =>
+        s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        s.genre.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        s.cast.some(actor => actor.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+      // Combine and slice
+      const results = [
+        ...movieResults.map(m => ({ ...m, _type: 'movie' as const })),
+        ...seriesResults.map(s => ({ ...s, _type: 'series' as const }))
+      ].slice(0, 5);
+      setSearchResults(results);
     }, 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  const handleResultClick = (movie: Movie) => {
-    navigate(`/movies/${movie.id}`);
+  const handleResultClick = (result: any) => {
+    if (result._type === 'series') {
+      navigate(`/series/${result.id}`);
+    } else {
+      navigate(`/movies/${result.id}`);
+    }
     setSearchQuery('');
     setSearchResults([]);
     setShowResults(false);
     setShowSearch(false);
     closeMenu();
-  };
-
-  const slugify = (text: string) => {
-    return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
   };
 
   return (
@@ -176,22 +210,23 @@ const Navbar = () => {
           </button>
           {showResults && searchResults.length > 0 && (
             <div className="absolute left-1/2 transform -translate-x-1/2 mt-16 w-full max-w-3xl bg-secondary-light border border-gray-700 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
-              {searchResults.map(movie => (
+              {searchResults.map(result => (
                 <Link
-                  key={movie.id}
-                  to={`/movies/${movie.id}`}
+                  key={result.id}
+                  to={result._type === 'series' ? `/series/${result.id}` : `/movies/${result.id}`}
                   className="block px-4 py-2 hover:bg-gray-700 transition-colors"
-                  onClick={() => handleResultClick(movie)}
+                  onClick={() => handleResultClick(result)}
                 >
                   <div className="flex items-center gap-3">
                     <img 
-                      src={movie.image} 
-                      alt={movie.title} 
+                      src={result.image} 
+                      alt={result.title} 
                       className="w-10 h-10 object-cover rounded" 
                     />
                     <div>
-                      <p className="font-medium">{movie.title}</p>
-                      <p className="text-sm text-gray-400">{movie.genre.split(',')[0]} • {movie.releaseDate.split('-')[0]}</p>
+                      <p className="font-medium">{result.title}</p>
+                      <p className="text-sm text-gray-400">{result.genre.split(',')[0]} • {result.releaseDate.split('-')[0]}</p>
+                      <span className="text-xs text-primary font-semibold">{result._type === 'series' ? 'Series' : 'Movie'}</span>
                     </div>
                   </div>
                 </Link>
@@ -199,9 +234,7 @@ const Navbar = () => {
             </div>
           )}
           {showResults && searchQuery && searchResults.length === 0 && (
-            <div className="absolute left-1/2 transform -translate-x-1/2 mt-16 w-full max-w-3xl bg-secondary-light border border-gray-700 rounded-lg shadow-lg z-50 px-4 py-2 text-gray-400 text-center">
-              {/* PLACEHOLDER: To be deleted if not needed */}
-            </div>
+            <></>
           )}
         </div>
       )}

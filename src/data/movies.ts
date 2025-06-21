@@ -6,7 +6,8 @@ export interface Movie {
   video?: string; // Optional video link for each movie
   trailer: string; // Trailer link for each movie
   rating: number;
-  duration: string;
+  duration?: string; // Make duration optional
+  createdAt?: string; // Add createdAt field
   description: string;
   director: string;
   cast: string[];
@@ -15,6 +16,104 @@ export interface Movie {
 }
 
 export const movies: Movie[] = [
+  {
+    id: '1',
+    title: '13 SINS',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/x4tC1s6oFG9nEyxVSM0FiIsLea1.jpg',
+    video: 'https://www.mediafire.com/file/lexz2h6ba3ur99e/13_SINS_.mp4/file',
+    trailer: 'https://youtu.be/dtyF9dRI7tc',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'Rocky',
+    cast: ['remybetty'],
+    releaseDate: '2025-20-04'
+  },
+  {
+    id: '2',
+    title: 'diablo A',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/qhHXBt9y24YHJOkmtfsmB7JtTBp.jpg',
+    video: 'https://www.mediafire.com/file/ddgnnoaeqob6bey/DIABLO_A.mp4/file',
+    trailer: 'https://youtu.be/ANKPsCTh0Og',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'sankara da premier',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
+  {
+    id: '3',
+    title: 'diablo B',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/qhHXBt9y24YHJOkmtfsmB7JtTBp.jpg',
+    video: 'https://www.mediafire.com/file/ijwph0kt117fvrm/DIABLO_B.mp4/file',
+    trailer: 'https://youtu.be/ANKPsCTh0Og',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'sankara da premier',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
+  {
+    id: '4',
+    title: 'UNHINGED A',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/1R1BP2Wo5YxHrZ5iIOpqXmP93os.jpg',
+    video: 'https://www.mediafire.com/file/lm3q6eg5uj5s7yj/UNHINGED_A.mp4/file',
+    trailer: 'https://youtu.be/vNJ0szhjvdM',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'rocky',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
+  {
+    id: '5',
+    title: 'UNKHINGED B',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/1R1BP2Wo5YxHrZ5iIOpqXmP93os.jpg',
+    video: 'https://www.mediafire.com/file/nmeb2tkapwcxahj/UNHINGED_B.mp4/file',
+    trailer: 'https://youtu.be/vNJ0szhjvdM',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'rocky',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
+  {
+    id: '6',
+    title: 'closs range',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/1mB2uLg9qDzLX6BpJReAFAPyAtv.jpg',
+    video: 'https://www.mediafire.com/file/znqdxutcxhgm1q7/Close_Range_Sankara_...er250_.mp4/file',
+    trailer: 'https://youtu.be/7a6u6jGGOhw',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'sankara da premier',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
+  {
+    id: '7',
+    title: 'ghost rider',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/r0xS36paHndFpSlXKXMFNO1Fpv4.jpg',
+    video: 'https://www.mediafire.com/file/o9pxxtfp21siygz/Ghost_Rider_Sankara_1.mp4/file',
+    trailer: 'https://youtu.be/nu6R7ypaz5g',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'sankara da premier',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
+    releaseDate: '2012-05-04'
+  },
   {
     id: '8',
     title: 'until down',
@@ -154,4 +253,11 @@ export const movies: Movie[] = [
     cast: ['Robert Downey Jr.', 'Chris Evans', 'Scarlett Johansson'],
     releaseDate: '2012-05-04'
   }]
-  
+.map(movie => {
+  const withDuration = { ...movie, duration: movie.duration || '2h 00min' };
+  // Add createdAt only if not present
+  return {
+    ...withDuration,
+    createdAt: (movie as any).createdAt || new Date().toISOString(),
+  };
+});
