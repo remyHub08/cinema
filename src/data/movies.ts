@@ -18,6 +18,20 @@ export interface Movie {
 export const movies: Movie[] = [
   {
     id: '0',
+    title: 'Kesari Chapter 2A',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/jgGSqe1YgSot6Y1zDVTVkbsZ46z.jpg',
+    video: 'https://www.mediafire.com/file/v9qwpmlvhwgupp2/KESARI_2_A.mp4/file',
+    trailer: 'https://youtu.be/r-7g08INMSI',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'Rocky',
+    cast: ['remybetty'],
+    releaseDate: '2025-20-04'
+  },  
+  {
+    id: '0',
     title: 'the guest',
     genre: 'Action, Adventure, Sci-Fi',
     image: 'https://image.tmdb.org/t/p/original/x9BvRmPsXzN6e2cxvf5ZCBh7FQh.jpg',
@@ -26,7 +40,7 @@ export const movies: Movie[] = [
     rating: 8.0,
     duration: '2h 23min',
     description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
-    director: 'Rocky',
+    director: 'sankara da premier',
     cast: ['remybetty'],
     releaseDate: '2025-20-04'
   },  
