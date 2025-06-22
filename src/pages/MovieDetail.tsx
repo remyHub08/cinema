@@ -64,6 +64,7 @@ const MovieDetail = () => {
                   <Clock className="h-5 w-5 text-gray-400 mr-3 mt-0.5" />
                   <div>
                     <h3 className="font-semibold">Duration</h3>
+                    
                     <p className="text-gray-400">{movie.duration}</p>
                   </div>
                 </div>

@@ -16,6 +16,20 @@ export interface Movie {
 }
 
 export const movies: Movie[] = [
+   {
+    id: '0',
+    title: 'Kesari Chapter 2B',
+    genre: 'Action, Adventure, Sci-Fi',
+    image: 'https://image.tmdb.org/t/p/original/jgGSqe1YgSot6Y1zDVTVkbsZ46z.jpg',
+    video: 'https://www.mediafire.com/file/g48la5ccpna1ecr/KESARI_2_B.mp4/file',
+    trailer: 'https://youtu.be/r-7g08INMSI',
+    rating: 8.0,
+    duration: '2h 23min',
+    description: 'Earthxs mightiest heroes must come together and learn to fight as a team.',
+    director: 'Rocky',
+    cast: ['remybetty'],
+    releaseDate: '2025-20-04'
+  },
   {
     id: '0',
     title: 'Kesari Chapter 2A',
